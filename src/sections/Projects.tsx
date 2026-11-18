@@ -11,6 +11,27 @@ const Head = ({ n, title, sub, stack, href }: { n: string; title: string; sub: s
     <div className="mt-4 flex flex-wrap gap-1.5">{stack.map(s => <span key={s} className="chip">{s}</span>)}</div>
     <a href={href} target="_blank" rel="noopener noreferrer" className="btn mt-5">{<Github size={16} />}GitHub repository<ArrowUpRight size={14} /><span className="sr-only">(opens in a new tab)</span></a></div>)
 
+function Paywell() {
+  const spend: [string, number][] = [['Food', 62], ['Travel', 38], ['Bills', 80], ['Fun', 24]]
+  const rows = ['Groceries', 'Wallet top-up', 'Transfer to friend']
+  const flow: [string, string][] = [['Flutter app', 'Dart · 10+ screens'], ['REST API', 'Java 21 · Spring Boot'], ['Data layer', 'PostgreSQL · Redis'], ['Fraud service', 'Python · FastAPI']]
+  const facts: [string, string][] = [['10+', 'mobile screens'], ['15+', 'REST API endpoints'], ['10+', 'database entities']]
+  return (<div className="card grid gap-10 border-cyan/30 lg:grid-cols-[1.1fr_.9fr]" onPointerMove={glow}>
+    <div><p className="font-mono text-xs text-cyan">01 · FINTECH · IN PROGRESS</p><h3 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">PAYWELL</h3><p className="mt-1 text-mute">Fintech Mobile Application</p>
+      <p className="mt-4 inline-flex rounded-full border border-cyan/40 px-3 py-1 font-mono text-xs text-cyan">Founder &amp; Full-Stack Developer · Nov 2026 – Present</p>
+      <div className="mt-4 flex flex-wrap gap-1.5">{['Flutter', 'Dart', 'Java 21', 'Spring Boot', 'PostgreSQL', 'Redis', 'Python', 'FastAPI', 'Docker', 'REST APIs'].map(s => <span key={s} className="chip">{s}</span>)}</div>
+      <ul className="mt-5 list-disc space-y-2 pl-5 text-sm text-mute"><li>Building a cross-platform fintech app with Flutter, Dart, Java 21 and Spring Boot.</li><li>REST APIs for user authentication, wallet management, simulated payments and transaction tracking.</li><li>Money Radar: smart budgeting, spending insights and financial activity monitoring.</li><li>PostgreSQL architecture designed for transaction integrity, idempotency and audit logging.</li><li>Python FastAPI-based fraud detection service integrated into a scalable backend architecture.</li></ul>
+      <div className="mt-6 grid grid-cols-3 gap-2">{facts.map(([a, b]) => <div key={b} className="rounded-xl border border-line bg-ink/60 p-3"><div className="text-xl font-bold text-cyan">{a}</div><div className="text-xs text-mute">{b}</div></div>)}</div></div>
+    <div><div className="mx-auto w-60 rounded-[2.2rem] border border-line bg-[#080c18] p-3 shadow-[0_0_60px_-15px_rgba(54,212,230,.5)]"><div className="rounded-[1.7rem] bg-ink p-4">
+      <div className="flex items-center gap-2 text-sm font-semibold"><Wallet size={16} className="text-cyan" />Money Radar</div>
+      <div className="mt-4 flex h-24 items-end gap-2">{spend.map(([l, h], k) => <div key={l} className="flex h-full flex-1 flex-col items-center justify-end gap-1"><motion.i initial={{ height: 0 }} whileInView={{ height: `${h}%` }} viewport={{ once: true }} transition={{ duration: 0.8, delay: k * 0.1 }} className="w-full rounded-t bg-gradient-to-t from-blue to-cyan" /><span className="text-[10px] text-mute">{l}</span></div>)}</div>
+      <p className="mt-4 text-[10px] uppercase tracking-widest text-mute">Recent activity</p>
+      <ul className="mt-2 space-y-1.5 text-xs">{rows.map((r, k) => <motion.li key={r} initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 + k * 0.12 }} className="rounded-lg border border-line px-2.5 py-2 text-slate-300">{r}</motion.li>)}</ul>
+      <p className="mt-3 flex items-center gap-1.5 text-[10px] text-cyan"><ShieldCheck size={12} />Fraud-check service</p></div></div>
+      <ol className="mt-6 grid grid-cols-2 gap-2">{flow.map(([t, d], k) => <motion.li key={t} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: k * 0.12 }} className="rounded-xl border border-line bg-ink/60 p-3"><span className="font-mono text-[10px] text-cyan">0{k + 1}</span><b className="block text-sm">{t}</b><span className="text-xs text-mute">{d}</span></motion.li>)}</ol>
+      <p className="mt-3 text-xs text-mute">Illustrative interface and architecture with sample data, not a screenshot.</p></div></div>)
+}
+
 function Kairox() {
   const [i, setI] = useState(0); const [play, setPlay] = useState(false)
   useEffect(() => { if (!play) return; const t = setInterval(() => setI(v => (v + 1) % 8), 1700); return () => clearInterval(t) }, [play])
